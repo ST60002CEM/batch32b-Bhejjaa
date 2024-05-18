@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendor_vault/common/custom_button.dart';
+import 'package:vendor_vault/common/custom_text_field.dart';
 import 'package:vendor_vault/screens/login_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -37,27 +38,37 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
               ),
               SizedBox(height: 32),
-             TextFormField(
-                    validator: (value) {},
-                    decoration: InputDecoration(hintText: "Email"),
-                ),
+              CustomTextField(
+                labelText: 'Password',
+                isPassword: true,
+                textColor: Colors.black,
+                fillColor: Color.fromARGB(255, 168, 162, 162),
+                borderColor: Colors.grey.shade400,
+              ),
               SizedBox(height: 16),
-             TextFormField(
-                    validator: (value) {},
-                    decoration: InputDecoration(hintText: "Username"),
-
-                ),
+              CustomTextField(
+                labelText: 'Password',
+                isPassword: true,
+                textColor: Colors.black,
+                fillColor: Color.fromARGB(255, 168, 162, 162),
+                borderColor: Colors.grey.shade400,
+              ),
               SizedBox(height: 16),
-             TextFormField(
-                    validator: (value) {},
-                    decoration: InputDecoration(hintText: "Password"),
-                ),
+             CustomTextField(
+                labelText: 'Password',
+                isPassword: true,
+                textColor: Colors.black,
+                fillColor: Color.fromARGB(255, 168, 162, 162),
+                borderColor: Colors.grey.shade400,
+              ),
               SizedBox(height: 16),
-              TextFormField(
-                    validator: (value) {},
-                    decoration: InputDecoration(hintText: "Confirm Password"),
-
-                ),
+               CustomTextField(
+                labelText: 'Password',
+                isPassword: true,
+                textColor: Colors.black,
+                fillColor: Color.fromARGB(255, 168, 162, 162),
+                borderColor: Colors.grey.shade400,
+              ),
               const SizedBox(height: 32),
                Center(
                   // Center the button horizontally
