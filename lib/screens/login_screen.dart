@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vendor_vault/common/custom_button.dart';
 
   class LoginScreen extends StatefulWidget {
     const LoginScreen({super.key});
@@ -52,13 +53,21 @@ import 'package:flutter_svg/flutter_svg.dart';
                     validator: (value) {},
                 ),
                 SizedBox(height: 32),
-                   ElevatedButton(
-                               onPressed: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (_) => HomeScreen()));
-                              },
-                              child: Text("Login"),
-                            ),
+                    Center(
+                  // Center the button horizontally
+                  child: CustomButton(
+                    text: 'Login',
+                    height: 50,
+                    width: 200, // Set a reasonable width
+                    onPressed: () {
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //       builder: (context) => const DashboardScreen()),
+                      // );
+                    },
+                  ),
+                ),
                 SizedBox(height: 16),
                 Text(
                   "OR",

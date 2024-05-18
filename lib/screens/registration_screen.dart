@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vendor_vault/common/custom_button.dart';
+import 'package:vendor_vault/screens/login_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -53,14 +55,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(height: 16),
               TextFormField(
                     validator: (value) {},
-                    decoration: InputDecoration(hintText: "Email"),
+                    decoration: InputDecoration(hintText: "Confirm Password"),
 
                 ),
               const SizedBox(height: 32),
-              Center(
-                // Center the button horizontally
-                
-              ),
+               Center(
+                  // Center the button horizontally
+                  child: CustomButton(
+                    text: 'Register',
+                    height: 50,
+                    width: 200, // Set a reasonable width
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                      );
+                    },
+                  ),
+                ),
               const SizedBox(height: 16),
               const Text(
                 "OR",
