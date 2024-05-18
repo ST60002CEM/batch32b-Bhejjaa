@@ -12,12 +12,19 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final _formKey = GlobalKey<FormState>();
+
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confpasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+        body: SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -40,7 +47,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(height: 32),
               CustomTextField(
                 labelText: 'Email',
-                isPassword: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+                isPassword: false,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
                 borderColor: Colors.grey.shade400,
@@ -48,43 +61,67 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(height: 16),
               CustomTextField(
                 labelText: 'Username',
-                isPassword: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your username';
+                  }
+                  return null;
+                },
+                isPassword: false,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
                 borderColor: Colors.grey.shade400,
               ),
               SizedBox(height: 16),
-             CustomTextField(
+              CustomTextField(
                 labelText: 'Password',
+                controller: _passwordController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
                 isPassword: true,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
                 borderColor: Colors.grey.shade400,
               ),
               SizedBox(height: 16),
-               CustomTextField(
+              CustomTextField(
                 labelText: 'Confirm Password',
+                controller: _confpasswordController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please confirm your password';
+                  } else if (value != _passwordController.text) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
                 isPassword: true,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
                 borderColor: Colors.grey.shade400,
               ),
               const SizedBox(height: 32),
-               Center(
-                  // Center the button horizontally
-                  child: CustomButton(
-                    text: 'Register',
-                    height: 50,
-                    width: 200, // Set a reasonable width
-                    onPressed: () {
+              Center(
+                // Center the button horizontally
+                child: CustomButton(
+                  text: 'Register',
+                  height: 50,
+                  width: 200, // Set a reasonable width
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const LoginScreen()),
                       );
-                    },
-                  ),
+                    }
+                  },
                 ),
+              ),
               const SizedBox(height: 16),
               const Text(
                 "OR",
@@ -129,6 +166,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

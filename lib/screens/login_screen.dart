@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendor_vault/common/custom_button.dart';
 import 'package:vendor_vault/common/custom_text_field.dart';
+import 'package:vendor_vault/screens/dashboard_screen.dart';
 import 'package:vendor_vault/screens/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RegistrationScreen()),
+                            builder: (context) => DashboardScreen()),
                       );
                     }
                   },
