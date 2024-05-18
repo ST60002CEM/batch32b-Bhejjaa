@@ -39,7 +39,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               SizedBox(height: 32),
               CustomTextField(
-                labelText: 'Password',
+                labelText: 'Email',
                 isPassword: true,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
@@ -47,7 +47,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               SizedBox(height: 16),
               CustomTextField(
-                labelText: 'Password',
+                labelText: 'Username',
                 isPassword: true,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
@@ -63,7 +63,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
               SizedBox(height: 16),
                CustomTextField(
-                labelText: 'Password',
+                labelText: 'Confirm Password',
                 isPassword: true,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),

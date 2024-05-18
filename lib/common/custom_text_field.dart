@@ -8,6 +8,8 @@ class CustomTextField extends StatelessWidget {
   final Color textColor; // Added textColor parameter
   final Color borderColor;
   final Color fillColor; // Added borderColor parameter
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   CustomTextField({
     required this.labelText,
@@ -16,6 +18,8 @@ class CustomTextField extends StatelessWidget {
     required this.textColor, // Set a default value for textColor
     required this.borderColor, // Set a default value for borderColor
     required this.fillColor,
+      this.controller,
+    this.validator,
   });
 
   @override
@@ -33,6 +37,8 @@ class CustomTextField extends StatelessWidget {
         SizedBox(width: 8),
         Expanded(
           child: TextFormField(
+            controller: controller,
+            validator: validator,
             obscureText: isPassword,
             style: TextStyle(color: textColor),
             decoration: InputDecoration(

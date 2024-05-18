@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendor_vault/common/custom_button.dart';
 import 'package:vendor_vault/common/custom_text_field.dart';
+import 'package:vendor_vault/screens/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _emailController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -30,22 +31,29 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 'Login',
                 style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 198, 185, 65)),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 198, 185, 65)),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 40),
               Center(
                 child: SvgPicture.asset(
-                'assets/icons/logo.svg',
-                height: 80,
+                  'assets/icons/logo.svg',
+                  height: 80,
                 ),
               ),
               SizedBox(height: 32),
               CustomTextField(
                 labelText: 'Username',
-                isPassword: true,
+                controller: _usernameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your username';
+                  }
+                  return null;
+                },
+                isPassword: false,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
                 borderColor: Colors.grey.shade400,
@@ -53,6 +61,13 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 16),
               CustomTextField(
                 labelText: 'Password',
+                controller: _passwordController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
                 isPassword: true,
                 textColor: Colors.black,
                 fillColor: Color.fromARGB(255, 168, 162, 162),
@@ -66,11 +81,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 50,
                   width: 200, // Set a reasonable width
                   onPressed: () {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const DashboardScreen()),
-                    // );
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RegistrationScreen()),
+                      );
+                    }
                   },
                 ),
               ),
@@ -125,11 +142,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => RegistrationScreen()),
-                      // );
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegistrationScreen()),
+                      );
                     },
                     child: const Text(
                       'sign up',
