@@ -61,7 +61,47 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 // Center the button horizontally
                 
               ),
-                         ],
+              const SizedBox(height: 16),
+              const Text(
+                "OR",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                '---------Sign in with---------',
+                style: TextStyle(
+                  fontSize: 26,
+                  color: Color.fromARGB(255, 198, 185, 65),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(
+                      'assets/icons/google_icon.svg',
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  IconButton(
+                    onPressed: () {
+                      // Login with Facebook
+                    },
+                    icon: SvgPicture.asset(
+                      'assets/icons/facebook_icon.svg',
+                      width: 50.0,
+                      height: 50,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
