@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vendor_vault/screens/dashboard_screen.dart';
 import 'package:vendor_vault/screens/splash_screen.dart';
 
 class App extends StatelessWidget {
