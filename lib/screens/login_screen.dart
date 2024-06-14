@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:vendor_vault/common/custom_button.dart';
-import 'package:vendor_vault/common/custom_text_field.dart';
+import 'package:vendor_vault/core/common/custom_button.dart';
+import 'package:vendor_vault/core/common/custom_text_field.dart';
 import 'package:vendor_vault/screens/dashboard_screen.dart';
 import 'package:vendor_vault/screens/registration_screen.dart';
 
@@ -29,20 +29,20 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(height: 80),
-              Text(
-                'Login',
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 198, 185, 65)),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 40),
               Center(
                 child: SvgPicture.asset(
                   'assets/icons/logo.svg',
                   height: 80,
                 ),
+              ),
+              SizedBox(height: 40),
+              Text(
+                'Welcome',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 198, 185, 65)),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 32),
               CustomTextField(
