@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendor_vault/core/common/custom_button.dart';
 import 'package:vendor_vault/core/common/custom_text_field.dart';
+import 'package:vendor_vault/core/common/custom_text_field2.dart';
 import 'package:vendor_vault/screens/dashboard_screen.dart';
 import 'package:vendor_vault/screens/registration_screen.dart';
 
@@ -62,9 +63,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 borderColor: Colors.grey.shade400,
               ),
               SizedBox(height: 16),
-              CustomTextField(
+              PasswordTextField(
                 labelText: 'Password',
                 controller: _passwordController,
+                obscureText: obscureTextVal,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';
