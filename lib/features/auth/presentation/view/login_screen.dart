@@ -4,9 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendor_vault/core/common/custom_button.dart';
 import 'package:vendor_vault/core/common/custom_text_field.dart';
 import 'package:vendor_vault/core/common/custom_text_field2.dart';
-import 'package:vendor_vault/screens/dashboard_screen.dart';
-import 'package:vendor_vault/screens/registration_screen.dart';
-
+import 'package:vendor_vault/features/auth/presentation/viewmodel/auth_view_model.dart';
+import 'package:vendor_vault/features/auth/presentation/view/registration_screen.dart';
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
@@ -67,6 +66,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 labelText: 'Password',
                 controller: _passwordController,
                 obscureText: obscureTextVal,
+                suffixIcon: IconButton(
+                  icon: Icon(obscureTextVal ? Icons.visibility : Icons.visibility_off),
+                   color: Colors.black,
+                    onPressed: () {
+                      setState(() {
+                        obscureTextVal = !obscureTextVal;
+                      });
+                    },
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';
@@ -79,23 +87,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 borderColor: Colors.grey.shade400,
               ),
               SizedBox(height: 32),
-              Center(
-                // Center the button horizontally
-                child: CustomButton(
-                  text: 'Login',
-                  height: 50,
-                  width: 200, // Set a reasonable width
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DashboardScreen()),
-                      );
-                    }
-                  },
+              SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        await ref
+                            .read(authViewModelProvider.notifier)
+                            .loginUser(
+                              _usernameController.text,
+                              _passwordController.text,
+                            );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 101, 249, 106),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                  ),
                 ),
-              ),
               SizedBox(height: 16),
               Text(
                 "OR",

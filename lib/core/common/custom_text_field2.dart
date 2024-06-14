@@ -19,7 +19,7 @@ class PasswordTextField extends StatelessWidget {
     required this.borderColor, // Set a default value for borderColor
     required this.fillColor,
       this.controller,
-    this.validator, required bool obscureText,
+    this.validator, required bool obscureText, required IconButton suffixIcon,
   });
 
   @override
