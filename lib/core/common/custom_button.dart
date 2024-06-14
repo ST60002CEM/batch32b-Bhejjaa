@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     required this.width,
     required this.height,
-    this.labelColor = Colors.black
+    this.labelColor = Colors.black, 
     
   });
 
