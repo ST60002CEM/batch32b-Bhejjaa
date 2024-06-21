@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vendor_vault/app/constants/api_endpoints.dart';
+import 'package:vendor_vault/app/shared_prefs.dart/user_shared_prefs.dart';
 import 'package:vendor_vault/core/error/failure.dart';
 import 'package:vendor_vault/core/networking/remote/http_service.dart';
 import 'package:vendor_vault/features/auth/domain/entity/auth_entity.dart';
