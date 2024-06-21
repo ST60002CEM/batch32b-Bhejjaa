@@ -5,6 +5,7 @@ import 'package:vendor_vault/app/constants/api_endpoints.dart';
 import 'package:vendor_vault/app/shared_prefs.dart/user_shared_prefs.dart';
 import 'package:vendor_vault/core/error/failure.dart';
 import 'package:vendor_vault/core/networking/remote/http_service.dart';
+import 'package:vendor_vault/features/auth/data/dto/get_current_user_dto.dart';
 import 'package:vendor_vault/features/auth/domain/entity/auth_entity.dart';
 
 final authRemoteDataSourceProvider = Provider(
