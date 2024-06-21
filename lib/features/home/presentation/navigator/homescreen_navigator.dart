@@ -6,11 +6,11 @@ import 'package:vendor_vault/features/home/presentation/view/home_screen.dart';
 final homeViewNavigatorProvider = Provider((ref) => HomeViewNavigator());
 
 class HomeViewNavigator with LoginScreenRoute {
-  void openHomeView() {}
+  void openHomeScreen() {}
 }
 
 mixin HomeViewRoute {
-  openHomeView() {
+  openHomeScreen() {
     NavigateRoute.popAndPushRoute(HomeScreen());
   }
 }

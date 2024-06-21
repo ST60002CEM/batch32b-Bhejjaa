@@ -6,6 +6,7 @@ import 'package:vendor_vault/core/common/custom_text_field.dart';
 import 'package:vendor_vault/core/common/custom_text_field2.dart';
 import 'package:vendor_vault/features/auth/presentation/viewmodel/auth_view_model.dart';
 import 'package:vendor_vault/features/auth/presentation/view/registration_screen.dart';
+import 'package:vendor_vault/features/home/presentation/view/home_screen.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -95,21 +96,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 width: double.infinity,
                 child: CustomButton(
                   text: "Login",
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      await ref.read(authViewModelProvider.notifier).loginUser(
-                            _usernameController.text,
-                            _passwordController.text,
-                          );
-                    }
-                  },
+                  onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
+          },
                   width: 10, // Adjust this value as needed
                   height: 50, // Adjust this value as needed
                   labelColor: Colors.black,
                 ),
               ),
               SizedBox(height: 16),
-              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
