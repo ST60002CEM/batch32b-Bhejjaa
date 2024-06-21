@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vendor_vault/core/error/failure.dart';
@@ -29,6 +31,12 @@ class AuthLocalRepository implements IAuthRepository {
   @override
   Future<Either<Failure, AuthEntity>> getCurrentUser() {
     // TODO: implement getCurrentUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, String>> uploadProfilePicture(File file) {
+    // TODO: implement uploadProfilePicture
     throw UnimplementedError();
   }
 }
