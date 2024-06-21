@@ -12,4 +12,7 @@ class ApiEndpoints {
   static const String getAllUser = "auth/getAllStudents";
   static const String updateUser = "auth/updateStudent/";
   static const String deleteUser = "auth/deleteUser/";
+  static const String imageUrl = "http://10.0.2.2:3000/uploads/";
+  static const String uploadImage = "auth/uploadImage";
+  static const String currentUser = "auth/getMe";
 }
