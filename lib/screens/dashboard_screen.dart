@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vendor_vault/screens/home_screen.dart';
+import 'package:vendor_vault/features/home/presentation/view/home_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
