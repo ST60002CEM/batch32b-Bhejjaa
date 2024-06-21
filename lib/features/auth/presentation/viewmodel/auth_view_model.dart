@@ -55,6 +55,25 @@ class AuthViewModel extends StateNotifier<AuthState> {
     );
   }
 
+  loginStudent(
+    String username,
+    String password,
+  ) async {
+    state = state.copyWith(isLoading: true);
+    var data = await authUseCase.loginUser(username, password);
+    data.fold(
+      (failure) {
+        state = state.copyWith(isLoading: false, error: failure.error);
+        showMySnackBar(message: failure.error, color: Colors.red);
+      },
+      (success) {
+        state = state.copyWith(isLoading: false, error: null);
+        openHomeScreen();
+      },
+    );
+  }
+
+
   void openRegistrationScreen() {
     navigator.openRegistrationScreen();
   }
