@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'package:uuid/uuid.dart';
 import 'package:vendor_vault/app/constants/hive_table_constant.dart';
 import 'package:vendor_vault/features/auth/domain/entity/auth_entity.dart';
@@ -17,24 +16,28 @@ class AuthHiveModel {
   final String userId;
 
   @HiveField(1)
-  final String email;
+  final String fname;
 
   @HiveField(2)
-  final String username;
+  final String lname;
 
   @HiveField(3)
-  final String phone;
+  final String username;
 
   @HiveField(4)
-  final String password;
+  final String phone;
 
   @HiveField(5)
+  final String password;
+
+  @HiveField(6)
   final String accountType;
 
   // Constructor
   AuthHiveModel({
     String? userId,
-    required this.email,
+    required this.fname,
+    required this.lname,
     required this.phone,
     required this.username,
     required this.password,
@@ -45,7 +48,8 @@ class AuthHiveModel {
   AuthHiveModel.empty()
       : this(
     userId: '',
-    email: '',
+    fname: '',
+    lname: '',
     phone: '',
     username: '',
     password: '',
@@ -55,17 +59,19 @@ class AuthHiveModel {
   // Convert Hive Object to Entity
   AuthEntity toEntity() => AuthEntity(
     id: userId,
-    email: email,
+    fname: fname,
+    lname: lname,
     phone: phone,
     username: username,
-    password: password, accountType: accountType,
-    
+    password: password, 
+    accountType: accountType,
   );
 
   // Convert Entity to Hive Object
   AuthHiveModel toHiveModel(AuthEntity entity) => AuthHiveModel(
     userId: const Uuid().v4(),
-    email: entity.email,
+    fname: entity.fname,
+    lname: entity.lname, 
     phone: entity.phone,
     username: entity.username,
     password: entity.password, accountType:entity.accountType,
@@ -77,6 +83,6 @@ class AuthHiveModel {
 
   @override
   String toString() {
-    return 'userId: $userId, email:$email, phone: $phone, username: $username, password: $password, accountType: $accountType';
+    return 'userId: $userId, fname: $fname, lname: $lname, phone: $phone, username: $username, password: $password, accountType: $accountType';
   }
 }

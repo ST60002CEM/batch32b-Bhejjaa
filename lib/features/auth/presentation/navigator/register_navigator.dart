@@ -1,6 +1,5 @@
-
 import 'package:vendor_vault/app/navigator/navigator.dart';
-import 'package:vendor_vault/screens/registration_screen.dart';
+import 'package:vendor_vault/features/auth/presentation/view/registration_screen.dart';
 
 class RegistrationScreenNavigator {}
 

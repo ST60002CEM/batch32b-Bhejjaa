@@ -59,7 +59,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
     navigator.openRegistrationScreen();
   }
 
-  // void openHomeScreen() {
-  //   navigator.openHomeScreen();
-  // }
+  void openHomeScreen() {
+    navigator.openHomeScreen();
+  }
 }

@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
     required this.borderColor, // Set a default value for borderColor
     required this.fillColor,
       this.controller,
-    this.validator,
+    this.validator, 
   });
 
   @override

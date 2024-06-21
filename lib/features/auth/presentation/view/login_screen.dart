@@ -6,17 +6,20 @@ import 'package:vendor_vault/core/common/custom_text_field.dart';
 import 'package:vendor_vault/core/common/custom_text_field2.dart';
 import 'package:vendor_vault/features/auth/presentation/viewmodel/auth_view_model.dart';
 import 'package:vendor_vault/features/auth/presentation/view/registration_screen.dart';
+
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
+
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _usernameController = TextEditingController(text: 'Bhejja');
+  final _passwordController = TextEditingController(text: 'Bhejja123');
   bool obscureTextVal = true;
+  final _gap = SizedBox(height: 32);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   height: 80,
                 ),
               ),
-              SizedBox(height: 40),
+              _gap,
               Text(
                 'Welcome',
                 style: TextStyle(
@@ -46,7 +49,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     color: Color.fromARGB(255, 198, 185, 65)),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 32),
+              _gap,
               CustomTextField(
                 labelText: 'Username',
                 controller: _usernameController,
@@ -67,13 +70,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 controller: _passwordController,
                 obscureText: obscureTextVal,
                 suffixIcon: IconButton(
-                  icon: Icon(obscureTextVal ? Icons.visibility : Icons.visibility_off),
-                   color: Colors.black,
-                    onPressed: () {
-                      setState(() {
-                        obscureTextVal = !obscureTextVal;
-                      });
-                    },
+                  icon: Icon(
+                      obscureTextVal ? Icons.visibility : Icons.visibility_off),
+                  color: Colors.black,
+                  onPressed: () {
+                    setState(() {
+                      obscureTextVal = !obscureTextVal;
+                    });
+                  },
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -86,74 +90,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 fillColor: Color.fromARGB(255, 168, 162, 162),
                 borderColor: Colors.grey.shade400,
               ),
-              SizedBox(height: 32),
+              _gap,
               SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        await ref
-                            .read(authViewModelProvider.notifier)
-                            .loginUser(
-                              _usernameController.text,
-                              _passwordController.text,
-                            );
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 101, 249, 106),
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                  ),
+                width: double.infinity,
+                child: CustomButton(
+                  text: "Login",
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      await ref.read(authViewModelProvider.notifier).loginUser(
+                            _usernameController.text,
+                            _passwordController.text,
+                          );
+                    }
+                  },
+                  width: 10, // Adjust this value as needed
+                  height: 50, // Adjust this value as needed
+                  labelColor: Colors.black,
                 ),
-              SizedBox(height: 16),
-              Text(
-                "OR",
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.black, fontSize: 20),
               ),
               SizedBox(height: 16),
-              Text(
-                '---------Sign in with---------',
-                style: TextStyle(
-                  fontSize: 26,
-                  color: Color.fromARGB(255, 198, 185, 65),
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/icons/google_icon.svg',
-                      height: 50,
-                      width: 50,
-                    ),
-                  ),
-                  SizedBox(width: 16),
-                  IconButton(
-                    onPressed: () {
-                      // Login with Facebook
-                    },
-                    icon: SvgPicture.asset(
-                      'assets/icons/facebook_icon.svg',
-                      width: 50.0,
-                      height: 50,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -164,11 +120,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegistrationScreen()),
-                      );
+                      ref
+                          .read(authViewModelProvider.notifier)
+                          .openRegistrationScreen();
                     },
                     child: const Text(
                       'sign up',
